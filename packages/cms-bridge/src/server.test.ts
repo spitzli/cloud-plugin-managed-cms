@@ -301,7 +301,8 @@ test("read capacity is reserved before executing database work", async () => {
     await rm(directory, { recursive: true, force: true });
   }
 });
-test("a complete 10 MiB media request decodes and commits without regex stack overflow", async () => {
+// These fixtures fsync each chunk/receipt; allow their bounded filesystem workload on the EU builder.
+test("a complete 10 MiB media request decodes and commits without regex stack overflow", { timeout: 60_000 }, async () => {
   const directory = await mkdtemp(`${tmpdir()}/cms-transfer-`);
   try {
     const store = new BridgeTransfers(directory);
@@ -343,7 +344,7 @@ test("a complete 10 MiB media request decodes and commits without regex stack ov
     await rm(directory, { recursive: true, force: true });
   }
 });
-test('active transfers reserve their future terminal receipt capacity',async()=>{
+test('active transfers reserve their future terminal receipt capacity',{timeout:60_000},async()=>{
  const directory=await mkdtemp(`${tmpdir()}/cms-transfer-`);try{const store=new BridgeTransfers(directory);const bytes=encoded();
  for(let i=0;i<127;i++){const {transfer}=await store.begin(scope,{op:'begin',size:bytes.length,sha256:hash(bytes),kind:'json'});await store.append(scope,{op:'append',transfer,offset:0,data:bytes.toString('base64')});await store.commit(scope,transfer,'https://site.invalid',async()=>Response.json({i}))}
  await store.begin(scope,{op:'begin',size:bytes.length,sha256:hash(bytes),kind:'json'});await assert.rejects(store.begin(scope,{op:'begin',size:bytes.length,sha256:hash(bytes),kind:'json'}),/capacity/);

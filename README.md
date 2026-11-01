@@ -40,3 +40,9 @@ and `managed-cms-universal.json`, SHA-256 checksums and a separate immutable CMS
 instance image binding. The release does not call the registry API, invent a
 registry signature or activate any customer instance. Registry admission stays
 pending until the owner publishes and verifies its actual signed receipt.
+
+`export-lock.json` preserves the initial export/standalone source snapshots; later
+changes are recorded by verified signed Git commits and release image digests.
+The two large durable-transfer integration fixtures have explicit 60-second
+budgets for their real sequential fsync workload; their assertions, chunk sizes
+and retained-receipt capacities remain unchanged.
