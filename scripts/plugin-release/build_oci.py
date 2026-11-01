@@ -14,6 +14,7 @@ import sys
 import tempfile
 
 MAX_FAILURE_LOG_BYTES = 2 * 1024 * 1024
+MAX_FAILURE_LOG_FILES = 10
 
 
 class BuildFailed(ValueError):
@@ -22,7 +23,19 @@ class BuildFailed(ValueError):
         self.private_log = private_log
 
 
-def retain_failure_log(log, temporary_root, secrets):
+def failure_directory(home):
+    home = Path(home)
+    require(home.is_absolute() and home.resolve() == home and home.is_dir() and home.stat().st_uid == os.getuid(), 'Canonical owned HOME required for private diagnostics')
+    directory = home / 'ci-failures'
+    require(not directory.is_symlink(), 'Private diagnostic directory cannot be a symlink')
+    directory.mkdir(mode=0o700, exist_ok=True)
+    info = directory.stat()
+    require(directory.resolve() == directory and info.st_uid == os.getuid() and stat.S_IMODE(info.st_mode) == 0o700, 'Private diagnostic directory must be owned mode 0700')
+    return directory
+
+
+def retain_failure_log(log, home, secrets):
+    directory = failure_directory(home)
     # Read enough overlap to redact credentials before truncating the retained tail.
     with Path(log).open('rb') as source:
         size = source.seek(0, os.SEEK_END)
@@ -33,9 +46,16 @@ def retain_failure_log(log, temporary_root, secrets):
         raw = raw.split(b'\n', 1)[1] if b'\n' in raw else b''
     for secret in sorted({value.encode() for value in secrets if value}, key=len, reverse=True):
         raw = raw.replace(secret, b'[REDACTED]')
-    descriptor, filename = tempfile.mkstemp(prefix='plugin-build-failure-', suffix='.log', dir=temporary_root)
+    descriptor, filename = tempfile.mkstemp(prefix='plugin-build-failure-', suffix='.log', dir=directory)
     with os.fdopen(descriptor, 'wb') as output:
         output.write(raw[-MAX_FAILURE_LOG_BYTES:])
+    files = []
+    for path in directory.glob('plugin-build-failure-*.log'):
+        info = path.lstat()
+        require(stat.S_ISREG(info.st_mode) and info.st_uid == os.getuid() and info.st_nlink == 1, 'Private diagnostic files must be owned regular single-link files')
+        files.append((info.st_mtime_ns, path))
+    for _, path in sorted(files, reverse=True)[MAX_FAILURE_LOG_FILES:]:
+        path.unlink()
     return Path(filename)
 
 
@@ -132,7 +152,8 @@ def build_image(context, temporary_root, config, token, check=False):
             require(metadata.is_file() and not metadata.is_symlink() and metadata.stat().st_size <= 128 * 1024, 'Bounded BuildKit image metadata required')
             return metadata_digest(json.loads(metadata.read_text()))
         except Exception:
-            retained = retain_failure_log(private / 'build.log', temporary_root, [token, auth, actor + ':' + token if token else ''])
+            require(not (Path(config['HOME']) / 'ci-failures').resolve().is_relative_to(context), 'Persistent diagnostics must remain outside the source context')
+            retained = retain_failure_log(private / 'build.log', config['HOME'], [token, auth, actor + ':' + token if token else ''])
             raise BuildFailed(retained) from None
 
 
