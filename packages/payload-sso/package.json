@@ -1,0 +1,16 @@
+{
+  "name": "@webdock/payload-sso",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./return-to": "./src/return-to.ts"
+  },
+  "peerDependencies": {
+    "payload": "4.0.0-canary.37"
+  },
+  "dependencies": {
+    "@webdock/oauth-session": "workspace:*"
+  }
+}

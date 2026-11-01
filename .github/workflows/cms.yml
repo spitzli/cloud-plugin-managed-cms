@@ -1,0 +1,92 @@
+name: Independent CMS
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cms-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  check:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ${{ fromJSON(vars.WEBDOCK_PLUGIN_CI_RUNNER) }}
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Resolve source image identity
+        shell: bash
+        run: printf 'IMAGE_REPOSITORY=ghcr.io/%s\n' "${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
+      - name: Check, unit test and build both components on the qualified EU builder
+        env:
+          WEBDOCK_BUILDKIT_ADDR: ${{ vars.WEBDOCK_BUILDKIT_ADDR }}
+          WEBDOCK_BUILDCTL_SHA256: ${{ vars.WEBDOCK_BUILDCTL_SHA256 }}
+        run: python3 scripts/plugin-release/build_oci.py --check < /dev/null
+  release:
+    needs: check
+    if: startsWith(github.ref, 'refs/tags/v') && github.event_name == 'push'
+    runs-on: ${{ fromJSON(vars.WEBDOCK_PLUGIN_CI_RUNNER) }}
+    timeout-minutes: 45
+    environment: plugin-release
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Require exact source version and preinstalled Bun
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(bun --version)" = 1.4.3
+          bun --no-env-file -e 'const p=await Bun.file("package.json").json();if(process.env.GITHUB_REF_NAME!=="v"+p.version)throw Error("Tag/version mismatch")'
+          printf 'IMAGE_REPOSITORY=ghcr.io/%s\n' "${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
+      - name: Push the plugin component with the actual source repository label
+        id: plugin
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WEBDOCK_BUILDKIT_ADDR: ${{ vars.WEBDOCK_BUILDKIT_ADDR }}
+          WEBDOCK_BUILDCTL_SHA256: ${{ vars.WEBDOCK_BUILDCTL_SHA256 }}
+          WEBDOCK_PLUGIN_DOCKERFILE: extensions/managed-cms/Dockerfile
+        run: |
+          set -euo pipefail
+          printf '%s' "$GH_TOKEN" | python3 scripts/plugin-release/build_oci.py
+      - name: Push the separate per-project CMS instance component
+        id: instance
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WEBDOCK_BUILDKIT_ADDR: ${{ vars.WEBDOCK_BUILDKIT_ADDR }}
+          WEBDOCK_BUILDCTL_SHA256: ${{ vars.WEBDOCK_BUILDCTL_SHA256 }}
+          WEBDOCK_PLUGIN_DOCKERFILE: apps/cms-instance/Dockerfile
+        run: |
+          set -euo pipefail
+          export IMAGE_REPOSITORY="$IMAGE_REPOSITORY-instance"
+          printf '%s' "$GH_TOKEN" | python3 scripts/plugin-release/build_oci.py
+      - name: Install the locked TS-v1 manifest generator
+        run: bun --no-env-file install --frozen-lockfile --ignore-scripts
+      - run: bun --no-env-file run build:sdk
+      - name: Prepare exact legacy-v1 manifest/descriptor and separate instance binding
+        env:
+          PLUGIN_IMAGE: ${{ steps.plugin.outputs.image }}
+          INSTANCE_IMAGE: ${{ steps.instance.outputs.image }}
+        run: bun --no-env-file scripts/finalize.mjs
+      - name: Publish immutable build assets; registry publication remains pending
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            echo 'Release already exists; refusing to overwrite immutable assets.' >&2
+            exit 1
+          fi
+          prerelease=()
+          if [[ "$GITHUB_REF_NAME" == *-* ]]; then prerelease=(--prerelease); fi
+          gh release create "$GITHUB_REF_NAME" release/tabularium.json release/managed-cms-universal.json release/cms-instance-image.json release/release-lock.json release/SHA256SUMS \
+            --verify-tag --title "$GITHUB_REF_NAME" --notes 'Independent TypeScript protocol-v1 CMS plugin and separate CMS instance images. Registry publication/signature admission remains pending; no customer activation was performed.' "${prerelease[@]}"
