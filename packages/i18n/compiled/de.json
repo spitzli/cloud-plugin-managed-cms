@@ -557,6 +557,9 @@
   "Account invitations and security emails are sent through turboSMTP. When Mail is enabled for a customer, we process account and domain details, sender and recipient addresses, message contents and attachments, delivery events, usage and suppression records. Enabled incoming mail uses a separate Stalwart instance for that customer; outgoing-only service does not require one. Mailbox contents and forwarding are processed only for the enabled service.": [
     "Kontoeinladungen und Sicherheitsnachrichten versenden wir über turboSMTP. Ist Mail für einen Kunden aktiviert, verarbeiten wir Konto- und Domaindaten, Absender- und Empfängeradressen, Nachrichteninhalte und Anhänge, Zustellereignisse, Nutzung und Sperrlisten. Aktivierter E-Mail-Empfang nutzt eine eigene Stalwart-Instanz für diesen Kunden; reiner Versand benötigt keine solche Instanz. Postfachinhalte und Weiterleitungen werden nur für den aktivierten Dienst verarbeitet."
   ],
+  "Account invitations and security emails use the configured authentication provider or sending connection. When Mail is enabled for a customer, we process account and domain details, sender and recipient addresses, message contents and attachments, delivery events, usage and suppression records. Enabled incoming mail uses a separate Stalwart instance for that customer; outgoing-only service does not require one. Mailbox contents and forwarding are processed only for the enabled service.": [
+    "Kontoeinladungen und Sicherheits-E-Mails verwenden den eingerichteten Authentifizierungsanbieter oder die Versandverbindung. Bei aktiviertem Mail-Dienst verarbeiten wir Konto- und Domainangaben, Absender- und Empfängeradressen, Nachrichteninhalte und Anhänge, Zustellereignisse, Nutzung und Sperrlisten. Aktivierter E-Mail-Empfang verwendet eine eigene Stalwart-Instanz für den jeweiligen Kunden; reiner Versand benötigt keine. Postfachinhalte und Weiterleitungen werden nur für den aktivierten Dienst verarbeitet."
+  ],
   "Account invitations and security messages are sent through turboSMTP using the recipient’s email address and the message contents, which may include time-limited account-setup links.": [
     "Kontoeinladungen und Sicherheitsnachrichten werden über turboSMTP versendet. Dabei werden die E-Mail-Adresse des Empfängers und der Nachrichteninhalt verwendet; dieser kann zeitlich begrenzte Links zur Kontoeinrichtung enthalten."
   ],
@@ -860,6 +863,9 @@
   "Allocated": [
     "Zugewiesen"
   ],
+  "Allocated and pending reservations describe configured resources, not live measurements. Replicas per app shows the maximum in each state.": [
+    "Zugewiesene und ausstehende Reservierungen beschreiben konfigurierte Ressourcen, keine Live-Messwerte. Replikas pro Anwendung zeigt jeweils den Höchstwert."
+  ],
   "Allocated resources, reservations and measured usage are tracked separately.": [
     "Zugewiesene Ressourcen, Reservierungen und gemessene Nutzung werden getrennt erfasst."
   ],
@@ -1073,6 +1079,9 @@
   "Application environment encryption is not configured.": [
     "Die Verschlüsselung für Umgebungsvariablen ist nicht eingerichtet."
   ],
+  "Application hosting": [
+    "Anwendungshosting"
+  ],
   "Application is deleted.": [
     "Die Anwendung wurde gelöscht."
   ],
@@ -1259,6 +1268,9 @@
   "Ask your operator to review the tracking domain count.": [
     "Bitte deinen Betreiber, die Anzahl der Tracking-Domains zu prüfen."
   ],
+  "Ask your provider to connect your GitHub account and authorize repositories for this workspace.": [
+    "Bitte deinen Anbieter, dein GitHub-Konto zu verbinden und Repositories für diesen Arbeitsbereich freizugeben."
+  ],
   "Assign a dedicated Tabularis runtime with a verified database role for this person.": [
     "Dieser Person eine eigene Tabularis-Instanz mit geprüfter Datenbankrolle zuweisen."
   ],
@@ -1348,6 +1360,9 @@
   ],
   "Authorize access": [
     "Zugriff genehmigen"
+  ],
+  "Authorized repository": [
+    "Freigegebenes Repository"
   ],
   "Automatic": [
     "Automatisch"
@@ -1766,6 +1781,9 @@
   "Button label": [
     "Schaltflächentext"
   ],
+  "By invitation": [
+    "Auf Einladung"
+  ],
   "CMS": [
     "CMS"
   ],
@@ -1775,8 +1793,8 @@
   "CMS areas": [
     "CMS-Bereiche"
   ],
-  "CMS by Webdock": [
-    "CMS von Webdock"
+  "CMS by Spitzli Cloud": [
+    "CMS von Spitzli Cloud"
   ],
   "CMS connection": [
     "CMS-Verbindung"
@@ -1948,6 +1966,9 @@
   ],
   "Check the backup request fields. Refresh before trying again.": [
     "Die Felder des Backup-Auftrags prüfen. Vor einem erneuten Versuch aktualisieren."
+  ],
+  "Check the branch and relative root directory.": [
+    "Prüfe den Branch und das relative Stammverzeichnis."
   ],
   "Check the database configuration fields.": [
     "Bitte prüfe die Angaben zur Datenbank."
@@ -2492,6 +2513,9 @@
   "Connect a domain you own when your project is ready. Your application and its data stay in place.": [
     "Verbinde deine eigene Domain, wenn dein Projekt bereit ist. Deine Anwendung und ihre Daten bleiben erhalten."
   ],
+  "Connect a repository": [
+    "Repository verbinden"
+  ],
   "Connect a repository source to this project before starting a build.": [
     "Verbinde ein Repository mit diesem Projekt, bevor du einen Build startest."
   ],
@@ -2991,6 +3015,9 @@
   "Create an application first.": [
     "Erstelle zuerst eine Anwendung."
   ],
+  "Create an application in this project before connecting a repository.": [
+    "Erstelle in diesem Projekt eine Anwendung, bevor du ein Repository verbindest."
+  ],
   "Create an individual offer": [
     "Individuelles Angebot erstellen"
   ],
@@ -3165,6 +3192,9 @@
   "Customer access record not found.": [
     "Kundenzugriff nicht gefunden."
   ],
+  "Customer allowance": [
+    "Kontingent des Arbeitsbereichs"
+  ],
   "Customer allowances": [
     "Kundenkontingente"
   ],
@@ -3266,6 +3296,9 @@
   ],
   "Customer-owned cluster": [
     "Kundeneigenes Cluster"
+  ],
+  "Customer-wide hosting allowances. Project or provider limits may be stricter.": [
+    "Hosting-Kontingente für den gesamten Arbeitsbereich. Projekt- oder Anbieterlimits können strenger sein."
   ],
   "Customers": [
     "Kunden"
@@ -4233,6 +4266,9 @@
   "Explore project data with Tabularis.": [
     "Projektdaten mit Tabularis erkunden."
   ],
+  "Extension plan and workload usage": [
+    "Erweiterungstarif und Ressourcennutzung"
+  ],
   "External backups, WAL archiving, PITR and restore verification are deferred. No backup service is active.": [
     "Externe Backups, WAL-Archivierung, zeitpunktbezogene Wiederherstellung und Wiederherstellungstests sind zurückgestellt. Es ist kein Backupdienst aktiv."
   ],
@@ -4682,6 +4718,9 @@
   ],
   "Hosting allowances": [
     "Hosting-Kontingente"
+  ],
+  "Hosting allowances and reservations, plus project and extension usage.": [
+    "Hosting-Kontingente und Reservierungen sowie die Nutzung von Projekten und Erweiterungen."
   ],
   "Hosting and resource limits": [
     "Hosting und Ressourcenlimits"
@@ -5529,6 +5568,9 @@
   "Load repositories": [
     "Repositories laden"
   ],
+  "Loading GitHub connections…": [
+    "GitHub-Verbindungen werden geladen…"
+  ],
   "Loading Mail…": [
     "Mail wird geladen…"
   ],
@@ -5553,6 +5595,9 @@
   "Loading deployment information…": [
     "Deployment-Informationen werden geladen …"
   ],
+  "Loading hosting reservations…": [
+    "Hosting-Reservierungen werden geladen…"
+  ],
   "Loading hosting status…": [
     "Hosting-Zustand wird geladen…"
   ],
@@ -5573,6 +5618,9 @@
   ],
   "Loading publications…": [
     "Veröffentlichungen werden geladen…"
+  ],
+  "Loading repositories…": [
+    "Repositories werden geladen…"
   ],
   "Loading sources…": [
     "Quellen werden geladen…"
@@ -6471,6 +6519,9 @@
   "No accessible installations found. Install the app on a GitHub account and choose the repositories to make available.": [
     "Keine zugänglichen Installationen gefunden. Installiere die App in einem GitHub-Konto und wähle die freizugebenden Repositories aus."
   ],
+  "No active GitHub connection": [
+    "Keine aktive GitHub-Verbindung"
+  ],
   "No active projects.": [
     "Keine aktiven Projekte."
   ],
@@ -6485,6 +6536,9 @@
   ],
   "No agent observation is available.": [
     "Es liegt keine Beobachtung durch einen Agent vor."
+  ],
+  "No application target": [
+    "Keine Zielanwendung"
   ],
   "No applications deployed yet.": [
     "Noch keine Anwendungen bereitgestellt."
@@ -6536,6 +6590,9 @@
   ],
   "No custom tracking domains yet.": [
     "Noch keine eigenen Tracking-Domains."
+  ],
+  "No customer limit": [
+    "Kein Limit für den Arbeitsbereich"
   ],
   "No customer members yet. Invite the first person with the Administrator role.": [
     "Noch keine Kundenmitglieder. Lade die erste Person mit der Admin-Rolle ein."
@@ -6737,6 +6794,9 @@
   ],
   "No releases yet.": [
     "Noch keine Releases vorhanden."
+  ],
+  "No repositories are authorized for this account. Ask your provider to update its repository access.": [
+    "Für dieses Konto sind keine Repositories freigegeben. Bitte deinen Anbieter, den Repository-Zugriff zu aktualisieren."
   ],
   "No repositories are available on this page. Review the app’s selected repositories on GitHub.": [
     "Auf dieser Seite sind keine Repositories verfügbar. Prüfe die für die App ausgewählten Repositories auf GitHub."
@@ -7035,6 +7095,9 @@
   "Open Clerk administration": [
     "Clerk-Verwaltung öffnen"
   ],
+  "Open Console": [
+    "Console öffnen"
+  ],
   "Open Neon Console": [
     "Neon-Konsole öffnen"
   ],
@@ -7226,6 +7289,9 @@
   ],
   "Optional services must be enabled separately. Incoming Mail is provisioned only when explicitly activated; outgoing-only Mail does not include a mailbox. Successful handoff to a mail relay does not guarantee delivery to the recipient’s inbox. When you connect your own provider account, its contract and charges continue to apply. We remain responsible for the obligations we have agreed to perform.": [
     "Optionale Dienste müssen gesondert aktiviert werden. E-Mail-Empfang wird nur nach ausdrücklicher Aktivierung eingerichtet; reiner Versand enthält kein Postfach. Eine erfolgreiche Übergabe an ein Mail-Relay garantiert keine Zustellung im Posteingang des Empfängers. Bindest du ein eigenes Anbieterkonto an, gelten dessen Vertrag und Entgelte weiter. Für unsere vereinbarten Verpflichtungen bleiben wir verantwortlich."
+  ],
+  "Optional website analytics are disabled for this waitlist release. We do not load an analytics tracker, record sessions or create heatmaps on this website. Necessary service and security logs remain separate.": [
+    "Optionale Website-Analysen sind für diesen Wartelisten-Release deaktiviert. Wir laden auf dieser Website keinen Analyse-Tracker und erstellen weder Sitzungsaufzeichnungen noch Heatmaps. Notwendige Betriebs- und Sicherheitsprotokolle sind davon getrennt."
   ],
   "Optional: create a project key with the Neon CLI": [
     "Optional: Projektschlüssel mit der Neon-CLI erstellen"
@@ -7481,6 +7547,9 @@
   ],
   "Pending offer not found.": [
     "Offenes Angebot nicht gefunden."
+  ],
+  "Pending reservation": [
+    "Ausstehende Reservierung"
   ],
   "Pending webhook deliveries": [
     "Ausstehende Webhook-Zustellungen"
@@ -7881,6 +7950,9 @@
   "Project ID": [
     "Projekt-ID"
   ],
+  "Project and extension usage": [
+    "Projekt- und Erweiterungsnutzung"
+  ],
   "Project areas": [
     "Projektbereiche"
   ],
@@ -7895,6 +7967,9 @@
   ],
   "Project extensions": [
     "Projekterweiterungen"
+  ],
+  "Project managers can connect an authorized repository below. Your provider must enable new GitHub account access.": [
+    "Projektverantwortliche können unten ein freigegebenes Repository verbinden. Neue GitHub-Konten muss dein Anbieter freischalten."
   ],
   "Project mappings are preserved. To revoke Vercel’s permission completely, remove this integration in Vercel.": [
     "Projektzuordnungen bleiben erhalten. Entferne diese Integration in Vercel, um die Berechtigung dort vollständig zu widerrufen."
@@ -8361,6 +8436,9 @@
   "Refresh connection": [
     "Verbindung aktualisieren"
   ],
+  "Refresh connections": [
+    "Verbindungen aktualisieren"
+  ],
   "Refresh inventory": [
     "Ressourcen aktualisieren"
   ],
@@ -8372,6 +8450,9 @@
   ],
   "Refresh projects": [
     "Projekte aktualisieren"
+  ],
+  "Refresh repositories": [
+    "Repositories aktualisieren"
   ],
   "Refresh the cluster inventory before changing this application.": [
     "Aktualisiere die Ressourcenübersicht, bevor du diese Anwendung änderst."
@@ -8642,6 +8723,9 @@
   ],
   "Repository provider adapter is unavailable.": [
     "Die Anbindung des Repository-Anbieters ist nicht verfügbar."
+  ],
+  "Repository setup is unavailable": [
+    "Repository-Einrichtung nicht verfügbar"
   ],
   "Repository source": [
     "Repository-Quelle"
@@ -9363,6 +9447,9 @@
   "Select SMTP sending or API sending when creating the credential for your application.": [
     "Wähle beim Erstellen der Zugangsdaten für deine Anwendung SMTP-Versand oder API-Versand."
   ],
+  "Select a GitHub account": [
+    "GitHub-Konto auswählen"
+  ],
   "Select a Vercel connection and project before enabling Git deployments.": [
     "Wähle eine Vercel-Verbindung und ein Projekt, bevor du Git-Deployments aktivierst."
   ],
@@ -9392,6 +9479,9 @@
   ],
   "Select a repository": [
     "Repository auswählen"
+  ],
+  "Select a repository already authorized for this workspace. Build access and publication are approved separately.": [
+    "Wähle ein für diesen Arbeitsbereich freigegebenes Repository. Die Freischaltung von Builds und die Veröffentlichung erfolgen separat."
   ],
   "Select a state": [
     "Status auswählen"
@@ -10794,6 +10884,9 @@
   "These keys can send mail and check their own submissions. They cannot read mailboxes.": [
     "Diese Schlüssel können E-Mails senden und ihre eigenen Versandvorgänge abfragen. Sie können keine Postfächer lesen."
   ],
+  "These plan meters cover projects and extensions. Workload measurements below belong to extensions; application hosting is shown separately.": [
+    "Diese Tarifwerte gelten für Projekte und Erweiterungen. Die Messwerte unten gehören zu Erweiterungen; das Anwendungshosting wird separat angezeigt."
+  ],
   "These providers operate internationally, including in the United States. An EU application region does not mean all support, network or service processing stays in the EU. Their published transfer safeguards and subprocessors are described in": [
     "Diese Anbieter sind international tätig, auch in den USA. Eine Anwendungsregion in der EU bedeutet nicht, dass sämtliche Support-, Netzwerk- oder Dienstverarbeitungen in der EU stattfinden. Ihre veröffentlichten Schutzmaßnahmen für Datenübermittlungen und Unterauftragsverarbeiter sind beschrieben in"
   ],
@@ -10935,6 +11028,9 @@
   "This formatted content is preserved. An administrator can edit it in Advanced tools.": [
     "Dieser formatierte Inhalt bleibt erhalten. Ein Administrator kann ihn über die erweiterten Werkzeuge bearbeiten."
   ],
+  "This hosting provider does not support repository source setup here.": [
+    "Dieser Hosting-Anbieter unterstützt hier keine Einrichtung von Repository-Quellen."
+  ],
   "This inventory is out of date. Refresh it before making changes.": [
     "Diese Ressourcenübersicht ist veraltet. Aktualisiere sie vor Änderungen."
   ],
@@ -10976,6 +11072,9 @@
   ],
   "This notice covers Webdock account and tenant management, the private Webdock Studio Vercel integration and these public information pages. It does not replace privacy information for independently operated customer websites or Vercel’s own service.": [
     "Dieser Hinweis gilt für die Konto- und Mandantenverwaltung von Webdock, die private Vercel-Integration von Webdock Studio und diese öffentlichen Informationsseiten. Er ersetzt weder die Datenschutzhinweise unabhängig betriebener Kundenwebsites noch diejenigen für Vercels eigenen Dienst."
+  ],
+  "This notice explains how we process personal data on Spitzli Cloud’s website and in its account, Console, hosting, database and Mail services. Customer-operated websites and applications have their own controllers and privacy notices.": [
+    "Diese Erklärung beschreibt, wie wir personenbezogene Daten auf der Website von Spitzli Cloud und in unseren Konto-, Console-, Hosting-, Datenbank- und Mail-Diensten verarbeiten. Für eigenständig betriebene Kundenwebsites und Anwendungen gelten deren eigene Verantwortlichkeiten und Datenschutzhinweise."
   ],
   "This notice explains how we process personal data on Spitzli Cloud’s website and in its account, Studio, hosting, database and Mail services. Customer-operated websites and applications have their own controllers and privacy notices.": [
     "Diese Erklärung beschreibt, wie wir personenbezogene Daten auf der Spitzli Cloud-Website und in unseren Konto-, Studio-, Hosting-, Datenbank- und Mail-Diensten verarbeiten. Für eigenständig betriebene Kundenwebsites und Anwendungen gelten deren eigene Verantwortlichkeiten und Datenschutzhinweise."
@@ -11261,6 +11360,9 @@
   ],
   "Unable to load": [
     "Laden nicht möglich"
+  ],
+  "Unable to load hosting reservations": [
+    "Hosting-Reservierungen konnten nicht geladen werden"
   ],
   "Unable to review request": [
     "Anfrage konnte nicht bearbeitet werden"
@@ -12017,6 +12119,12 @@
   ],
   "We process data needed to provide an agreed service under Article 6(1)(b) GDPR where you are the contracting party. Administration of team access, hosting visibility and security auditing rely on our legitimate interests in operating a secure project-management service under Article 6(1)(f). Where a legal obligation requires retention or disclosure, Article 6(1)(c) applies. Connecting Vercel grants technical access; it is not blanket consent to unrelated processing.": [
     "Daten, die zur Erbringung einer vereinbarten Leistung erforderlich sind, verarbeiten wir auf Grundlage von Artikel 6 Absatz 1 Buchstabe b DSGVO, sofern du Vertragspartei bist. Die Verwaltung von Teamzugängen, die Anzeige von Hostinginformationen und Sicherheitsprotokollierung beruhen auf unserem berechtigten Interesse am sicheren Betrieb eines Projektverwaltungsdienstes gemäß Artikel 6 Absatz 1 Buchstabe f. Erfordert eine gesetzliche Pflicht die Aufbewahrung oder Offenlegung, gilt Artikel 6 Absatz 1 Buchstabe c. Das Verbinden mit Vercel gewährt technischen Zugriff und stellt keine pauschale Einwilligung in sachfremde Verarbeitungen dar."
+  ],
+  "We process your email address, optional name, privacy acknowledgement and request/review timestamps when you request early access. Operators review requests manually. Saving a waitlist request does not verify your email, create an account or grant access. We use these details to handle your access request, not to subscribe you to a marketing newsletter. You can withdraw your request by contacting us.": [
+    "Wenn du frühen Zugang anfragst, verarbeiten wir deine E-Mail-Adresse, deinen optionalen Namen, die Datenschutzbestätigung sowie die Zeitpunkte der Anfrage und Prüfung. Betreiber prüfen Anfragen manuell. Das Speichern einer Wartelistenanfrage bestätigt weder deine E-Mail-Adresse noch erstellt es ein Konto oder gewährt Zugang. Wir verwenden diese Angaben zur Bearbeitung deiner Zugangsanfrage und nicht zur Anmeldung für einen Marketing-Newsletter. Du kannst deine Anfrage zurückziehen, indem du uns kontaktierst."
+  ],
+  "We use Neon for the platform database and managed sign-in, Vercel for web application hosting, Contabo for server infrastructure, turboSMTP for configured email delivery, and Cloudflare for DNS services. Core retains workspace authorisation and its additional account-security controls. GitHub and other customer-selected providers are involved when their integrations are enabled. Retained migration copies remain subject to the retention rules below until deleted. Providers receive only the data needed for their role. We also disclose data where legally required, for example to tax advisers or competent authorities.": [
+    "Wir verwenden Neon für die Plattformdatenbank und die verwaltete Anmeldung, Vercel für das Hosting der Webanwendungen, Contabo für Server-Infrastruktur, turboSMTP für eingerichteten E-Mail-Versand und Cloudflare für DNS-Dienste. Core verwaltet weiterhin die Berechtigungen der Arbeitsbereiche und die zusätzlichen Kontosicherheitskontrollen. GitHub und weitere vom Kunden ausgewählte Anbieter kommen bei aktivierten Anbindungen hinzu. Verbliebene Migrationskopien unterliegen bis zur Löschung den unten beschriebenen Aufbewahrungsregeln. Dienstleister erhalten die für ihre Aufgabe benötigten Daten. Daneben geben wir Daten weiter, soweit dies rechtlich erforderlich ist, etwa an Steuerberater oder zuständige Behörden."
   ],
   "We use Vercel for web application hosting, Contabo for managed server, database and incoming-mail infrastructure, turboSMTP for email delivery, and Cloudflare for DNS services. GitHub and other customer-selected providers are involved when their integrations are enabled. Neon was the previous platform database provider; retained migration copies remain subject to the retention rules below until deleted. Providers receive only the data needed for their role. We also disclose data where legally required, for example to tax advisers or competent authorities.": [
     "Wir nutzen Vercel für das Hosting der Webanwendungen, Contabo für verwaltete Server-, Datenbank- und Empfangsmail-Infrastruktur, turboSMTP für den E-Mail-Versand und Cloudflare für DNS-Dienste. GitHub und weitere vom Kunden ausgewählte Anbieter kommen bei aktivierten Anbindungen hinzu. Neon war der bisherige Anbieter der Plattformdatenbank; verbliebene Migrationskopien unterliegen bis zur Löschung den unten beschriebenen Aufbewahrungsregeln. Dienstleister erhalten die für ihre Aufgabe benötigten Daten. Daneben geben wir Daten weiter, soweit dies rechtlich erforderlich ist, etwa an Steuerberater oder zuständige Behörden."
